@@ -1,0 +1,70 @@
+<html>
+<head>
+<title>To-do List</title>
+<script>
+
+// set the to-do list as an array
+let toDo = [];
+
+function addTask(){
+
+    //ask for the name of the new task
+    let newTask = prompt("type your task: ");
+
+    //create a new task as a new element in the toDo array
+    toDo.push((toDo.length+1)+': '+newTask);
+
+    //display the current list of tasks on the page
+    displayTasks();
+
+}
+
+function endProgram(){
+    //reload the page with a default text
+    document.write('thank you for using this fantastic program!');
+}
+
+function markTaskCompleted(){
+    
+    //ask which task should be completed
+    let taskDelete = prompt("type the number of the task that has been completed: ");
+    
+    //modify the toDo array
+    toDo.splice(taskDelete-1,1,`${taskDelete}: [done]`);
+
+    //display the current list of tasks on the page
+    displayTasks();
+}
+
+function displayTasks(){
+    document.getElementById("tasks").innerHTML=toDo.join('<br>');
+    
+    //below is a non-functional-yet functionality to present each task as a separate paragraph
+    //the end goal of this is to be able to define a separate button or mechanism to delete/mark done an individual task
+    //without needing to ask the user which task he wants to make completed
+    // for(i=0;i<toDo.length;i++){
+    //     let parent = document.getElementById("div");
+    //     let child = document.createElement("p");
+    //     let text = document.createTextNode(toDo[i]);
+    //     child.appendChild(text);
+    //     parent.appendChild(child);
+    // }
+}
+
+</script>
+</head>
+<body>
+<!-- <script src="todo.js"></script> -->
+    <p>Welcome to our super-fancy to-do list app!</p>
+
+    <input type="button" name="newTask" value="Create a new task" onclick="addTask()">
+    <input type="button" name="taskDelete" value="Mark a task completed" onclick="markTaskCompleted()">
+    <input type="button" name="exit" value="Exit" onclick="endProgram()"> <br>
+
+    <h2>Your tasks:</h2>
+    <p id="tasks">You have no tasks yet.</p>
+
+    <div id="div"></div>
+
+</body>
+</html>
