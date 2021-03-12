@@ -42,13 +42,14 @@ function displayTasks(){
     //below is a non-functional-yet functionality to present each task as a separate paragraph
     //the end goal of this is to be able to define a separate button or mechanism to delete/mark done an individual task
     //without needing to ask the user which task he wants to make completed
-    // for(i=0;i<toDo.length;i++){
-    //     let parent = document.getElementById("div");
-    //     let child = document.createElement("p");
-    //     let text = document.createTextNode(toDo[i]);
-    //     child.appendChild(text);
-    //     parent.appendChild(child);
-    // }
+    
+    let output='<p>';
+    for(i=0;i<toDo.length;i++){
+        output=output+toDo[i]+'</p></p>';
+    }
+    output+='<p>';
+    
+    document.getElementById('div').innerHTML=output;
 }
 
 </script>
@@ -64,7 +65,9 @@ function displayTasks(){
     <h2>Your tasks:</h2>
     <p id="tasks">You have no tasks yet.</p>
 
-    <div id="div"></div>
+    <div id="div">
+        <h1>Your tasks:</h1>
+    </div>
 
 </body>
 </html>
